@@ -16,17 +16,14 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author wangyh
  * @create 2020-12-13 9:15
  */
-@Configuration
-public class RedisConfig {
+@Configuration public class RedisConfig {
 
-		@Autowired
-		private RedisConnectionFactory connectionFactory;
+		@Autowired private RedisConnectionFactory connectionFactory;
 
-		@Bean
-		public RedisTemplate<String, Object> redisTemplate () {
+		@Bean public RedisTemplate<String, Object> redisTemplate( ) {
 				RedisTemplate<String, Object> template = new RedisTemplate( );
 				template.setConnectionFactory( connectionFactory );
-				Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
+				Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>( Object.class );
 				ObjectMapper om = new ObjectMapper( );
 				om.setVisibility( PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY );
 				om.enableDefaultTyping( ObjectMapper.DefaultTyping.NON_FINAL );

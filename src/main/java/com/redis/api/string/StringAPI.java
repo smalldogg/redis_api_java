@@ -10,13 +10,11 @@ import org.springframework.stereotype.Component;
  * @create 2020-12-16 14:35
  */
 
-@Component
-public class StringAPI {
+@Component public class StringAPI {
 
-		@Autowired
-		private RedisTemplate<String, Object> redisTemplate;
+		@Autowired private RedisTemplate<String, Object> redisTemplate;
 
-		public void stringApi() {
-				redisTemplate.opsForValue().set("hello","中" );
+		public void stringApi( ) {
+				redisTemplate.opsForValue( ).set( "hello", "中" );
 		}
 }

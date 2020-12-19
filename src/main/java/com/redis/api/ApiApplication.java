@@ -1,5 +1,6 @@
 package com.redis.api;
 
+import com.redis.api.hash.RedisHash;
 import com.redis.api.set.RedisSet;
 import com.redis.api.sorted_set.RedisSset;
 import com.redis.api.string.BitOp;
@@ -12,8 +13,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 		public static void main( String[] args ) {
 				ConfigurableApplicationContext ctx = SpringApplication.run( ApiApplication.class, args );
-				RedisSset bean = ctx.getBean( RedisSset.class );
-				bean.SortedSet();
+				RedisHash bean = ctx.getBean( RedisHash.class );
+				bean.redisHash( );
 		}
 
 }
