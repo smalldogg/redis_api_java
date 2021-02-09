@@ -4,10 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redis.api.pojo.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.data.redis.hash.Jackson2HashMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wangyh
@@ -17,6 +18,22 @@ import java.util.Map;
 		@Autowired private ObjectMapper objectMapper;
 
 		@Autowired private RedisTemplate<String, Object> redisTemplate;
+
+
+		public void testEncoding() {
+				String s = "qwertyuiopasdfghjklzxcvbnm";
+				char[] chs = s.toCharArray();
+				Random random = new Random();
+				//512
+				String key = "eason";
+				for (int i = 0; i < 1000; ++i) {
+						int idx = random.nextInt(26);
+						String filed = UUID.randomUUID().toString().replace("-","");
+						redisTemplate.opsForHash().put(key, filed, chs[idx]);
+				}
+		}
+
+
 
 		public void redisHash( ) {
 				Person person = new Person( );

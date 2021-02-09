@@ -13,8 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 		public static void main( String[] args ) {
 				ConfigurableApplicationContext ctx = SpringApplication.run( ApiApplication.class, args );
-				RedisHash bean = ctx.getBean( RedisHash.class );
-				bean.redisHash( );
+				ctx.getBean( RedisHash.class ).testEncoding();
 		}
 
 }
